@@ -1,5 +1,4 @@
--- Your SQL goes here
-CREATE TABLE wishes (
+CREATE TABLE IF NOT EXISTS wishes (
     id SERIAL PRIMARY KEY,
     title VARCHAR NOT NULL,
     artist VARCHAR NOT NULL,
@@ -8,13 +7,12 @@ CREATE TABLE wishes (
     sessionid UUID NOT NULL
 );
 
-CREATE TABLE sessions (
+CREATE TABLE IF NOT EXISTS sessions (
     id UUID PRIMARY KEY
 );
 
-CREATE TABLE votes (
+CREATE TABLE IF NOT EXISTS votes (
     wishid SERIAL REFERENCES wishes(id),
     sessionid UUID REFERENCES sessions(id),
     PRIMARY KEY (wishid, sessionid)
 );
-
